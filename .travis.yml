@@ -43,7 +43,7 @@ install:
   - sudo chown $(id -u):$(id -g) $HOME/.kube/
   - sudo kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
   - sudo kubectl config set clusters.cluster.server $KUBE_SERVER
-  - sudo kubectl config view
+  - kubectl config view  
   #- sudo kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
 
 
