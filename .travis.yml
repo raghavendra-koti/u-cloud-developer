@@ -12,28 +12,31 @@ before_install:
   #- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   #- chmod +x docker-compose
   #- sudo mv docker-compose /usr/local/bin
-  #- curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-  #- chmod +x ./kubectl
-  #- sudo mv ./kubectl /usr/local/bin/kubectl
 
 install:
-#- docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
-  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
+  #- docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
+  # - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
   
-  - docker build -t udacity-restapi-feed course-03/exercises/udacity-c3-restapi-feed/.
-  - docker tag udacity-restapi-feed shaastra/udacity-restapi-feed:prod 
-  - docker push shaastra/udacity-restapi-feed:prod
+  # - docker build -t udacity-restapi-feed course-03/exercises/udacity-c3-restapi-feed/.
+  # - docker tag udacity-restapi-feed shaastra/udacity-restapi-feed:prod 
+  # - docker push shaastra/udacity-restapi-feed:prod
 
-  - docker build -t udacity-restapi-user course-03/exercises/udacity-c3-restapi-user/.
-  - docker tag udacity-restapi-user shaastra/udacity-restapi-user:prod 
-  - docker push shaastra/udacity-restapi-user:prod
+  # - docker build -t udacity-restapi-user course-03/exercises/udacity-c3-restapi-user/.
+  # - docker tag udacity-restapi-user shaastra/udacity-restapi-user:prod 
+  # - docker push shaastra/udacity-restapi-user:prod
 
-  - docker build -t udacity-frontend course-03/exercises/udacity-c3-frontend/.
-  - docker tag udacity-frontend shaastra/udacity-frontend:prod 
-  - docker push shaastra/udacity-frontend:prod
+  # - docker build -t udacity-frontend course-03/exercises/udacity-c3-frontend/.
+  # - docker tag udacity-frontend shaastra/udacity-frontend:prod 
+  # - docker push shaastra/udacity-frontend:prod
 
-  - docker build -t reverseproxy course-03/exercises/udacity-c3-deployment/docker/.
-  - docker tag reverseproxy shaastra/reverseproxy:prod 
-  - docker push shaastra/reverseproxy:prod
+  # - docker build -t reverseproxy course-03/exercises/udacity-c3-deployment/docker/.
+  # - docker tag reverseproxy shaastra/reverseproxy:prod 
+  # - docker push shaastra/reverseproxy:prod
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - sudo mv ./kubectl /usr/local/bin/kubectl
+  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
+
+
 
 
