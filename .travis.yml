@@ -36,8 +36,8 @@ install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - sudo mkdir ~/.kube
-  - sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-  - sudo sysctl net.bridge.bridge-nf-call-iptables=1
+  #- sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+  #- sudo sysctl net.bridge.bridge-nf-call-iptables=1
   - sudo mv kubeconfig $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/
