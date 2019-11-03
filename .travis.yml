@@ -35,6 +35,10 @@ install:
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
+  - sudo mkdir ~/.kube
+  - sudo mv kubeconfig ~/.kube/config
+  - kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
+  - kubectl config set clusters.cluster.server $KUBE_SERVER 
   - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
 
 
