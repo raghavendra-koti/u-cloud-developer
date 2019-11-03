@@ -45,8 +45,8 @@ install:
   - sudo chown $(id -u):$(id -g) $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/
   
-  - sudo kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
-  - sudo kubectl config set clusters.cluster.server $KUBE_SERVER
+  - sudo kubectl config set clusters.my-dev-cluster.ap-south-1.eksctl.io.certificate-authority-data $KUBE_CERTIFICATE
+  - sudo kubectl config set clusters.my-dev-cluster.ap-south-1.eksctl.io.server $KUBE_SERVER
   - kubectl config view --raw
   - sudo kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
 
