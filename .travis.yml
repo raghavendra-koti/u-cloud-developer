@@ -37,9 +37,9 @@ install:
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - sudo mkdir ~/.kube
   - sudo mv kubeconfig ~/.kube/config
-  - kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
-  - kubectl config set clusters.cluster.server $KUBE_SERVER 
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
+  - sudo kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
+  - sudo kubectl config set clusters.cluster.server $KUBE_SERVER 
+  - sudo kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
 
 
 
