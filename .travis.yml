@@ -18,9 +18,22 @@ before_install:
 
 install:
 #- docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
+  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
+  
   - docker build -t udacity-restapi-feed course-03/exercises/udacity-c3-restapi-feed/.
-  - docker tag udacity-restapi-feed shaastra/udacity-restapi-feed:prod
-  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD" 
+  - docker tag udacity-restapi-feed shaastra/udacity-restapi-feed:prod 
   - docker push shaastra/udacity-restapi-feed:prod
+
+  - docker build -t udacity-restapi-user course-03/exercises/udacity-c3-restapi-user/.
+  - docker tag udacity-restapi-user shaastra/udacity-restapi-user:prod 
+  - docker push shaastra/udacity-restapi-user:prod
+
+  - docker build -t udacity-frontend course-03/exercises/udacity-c3-frontend/.
+  - docker tag udacity-frontend shaastra/udacity-frontend:prod 
+  - docker push shaastra/udacity-frontend:prod
+
+  - docker build -t reverseproxy course-03/exercises/udacity-c3-deployment/docker/.
+  - docker tag reverseproxy shaastra/reverseproxy:prod 
+  - docker push shaastra/reverseproxy:prod
 
 
