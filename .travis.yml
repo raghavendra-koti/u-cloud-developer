@@ -40,13 +40,13 @@ install:
   - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
   - chmod +x ./aws-iam-authenticator
   - sudo mv ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
-  #- sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-  #- sudo sysctl net.bridge.bridge-nf-call-iptables=1
+  
   - sudo mv kubeconfig $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/
-  #- sudo kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
-  #- sudo kubectl config set clusters.cluster.server $KUBE_SERVER
+  
+  - sudo kubectl config set clusters.cluster.certificate-authority-data $KUBE_CERTIFICATE
+  - sudo kubectl config set clusters.cluster.server $KUBE_SERVER
   - kubectl config view --raw
   - sudo kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
 
