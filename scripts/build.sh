@@ -7,7 +7,7 @@
 
 VERSION=$2
 
-if [ "$1" == "BUILD" -o "$1" == "DEPLOY" ] 
+if [ "$1" == "BUILD" -o "$1" == "DEPLOY" -o  $TRAVIS_PULL_REQUEST == "true"] 
 then
     docker -v 
     #&& docker-compose -v

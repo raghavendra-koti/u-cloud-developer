@@ -4,6 +4,7 @@ VERSION=$2
 BETA=""
 
 if [$TRAVIS_PULL_REQUEST != "false"]
+then
     exit 0
 fi
 
