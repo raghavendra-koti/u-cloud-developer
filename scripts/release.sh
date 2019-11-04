@@ -21,7 +21,7 @@ then
 
     if [ $ACTION == "RELEASE-BETA" ]
     then
-        BETA="-BETA"
+        BETA="-beta"
 
         sed -i "s/replicas.*/replicas: 1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
         sed -i "s/replicas.*/replicas: 1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
