@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-$ACTION=$1
+ACTION=$1
 VERSION=$2
 
 if [$TRAVIS_PULL_REQUEST != "false"]
