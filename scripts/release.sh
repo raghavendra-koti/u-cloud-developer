@@ -23,10 +23,10 @@ then
     then
         BETA="-BETA"
 
-        sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
-        sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
-        sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/frontend-deployment.yaml
-        sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
+        sed -i "s/replicas.*/replicas: 1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
+        sed -i "s/replicas.*/replicas: 1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
+        sed -i "s/replicas.*/replicas: 1/g" course-03/exercises/udacity-c3-deployment/k8s/frontend-deployment.yaml
+        sed -i "s/replicas.*/replicas: 1/g" course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
     fi 
 
     if [ $ACTION == "ROLLBACK-BETA" ]
