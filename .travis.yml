@@ -11,9 +11,9 @@ env:
   - ACTION='BUILD' VERSION= ROLLBACK_VERSION=
 
 before_install:
-  - ./scripts/build.sh $ACTION
-  - ./scripts/deploy.sh $ACTION, $VERSION, $ROLLBACK_VERSION
+  script: scripts/build.sh $ACTION
+  script: scripts/deploy.sh $ACTION, $VERSION, $ROLLBACK_VERSION
 
 install:
-  - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./scripts/release.sh $ACTION, $VERSION, $ROLLBACK_VERSION; fi'
+  script: scripts/release.sh $ACTION, $VERSION, $ROLLBACK_VERSION
 
