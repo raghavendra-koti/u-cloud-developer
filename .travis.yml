@@ -11,9 +11,9 @@ env:
   - ACTION='BUILD' VERSION= ROLLBACK_VERSION=
 
 before_install:
-  script: scripts/build.sh $ACTION
-  script: scripts/deploy.sh $ACTION, $VERSION, $ROLLBACK_VERSION
+  - bash ./scripts/build.sh $ACTION
+  - bash ./scripts/deploy.sh $ACTION, $VERSION, $ROLLBACK_VERSION
 
 install:
-  script: scripts/release.sh $ACTION, $VERSION, $ROLLBACK_VERSION
+  - bash ./scripts/release.sh $ACTION, $VERSION, $ROLLBACK_VERSION
 
