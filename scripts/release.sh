@@ -36,6 +36,7 @@ then
         ./scripts/kill-beta.sh
     fi
 
+    sudo chmod +x ./scripts/prepare-release.sh
     ./scripts/prepare-release.sh
 
     sed -i "s/\$DEPLOYMENT_VERSION/backend-user${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
