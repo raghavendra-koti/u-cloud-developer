@@ -14,7 +14,9 @@ if [ $ACTION == "RELEASE" -o $ACTION == "RELEASE-BETA" -o $ACTION == "PROMOTE" -
 then
     if [ $ACTION == "ROLLBACK" ]
     then
+        echo "Setting rollback version"
         VERSION = $3
+        echo "VERSION ..= ${VERSION}"
     fi
 
     if [ $ACTION == "RELEASE-BETA" ]
