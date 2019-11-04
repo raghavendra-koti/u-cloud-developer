@@ -12,16 +12,16 @@ There are four services in this repository/project
 * DockerFile is present that builds each of the above projects into a docker image
 
 ## Development process (Continuous Integration)
-Create a branch out of master and then develop the feature/fix. 
-Log a Pull Request to merge into master after development/testing is done
-After PR is reviewed and approved, CI/CD process runs a plain vanila build automatically
-The plain vanila build verifies code compilation and docker images builds
+1. Create a branch out of master and then develop the feature/fix. 
+1. Log a Pull Request to merge into master after development/testing is done
+1. After PR is reviewed and approved, CI/CD process runs a plain vanila build automatically
+1. The plain vanila build verifies code compilation and docker images builds
 
 ## Deployment/Release Process (Continuous Deployment)
-Deploy and release are separate actions - for the sake of audit 
-"Deploy" pushes versioned docker images to Git Hub
-"Release" release the appropriate version of the software to the kubernetes cloud in rolling manner to avoid downtime
-To deploy/release services, a commit and push to master branch is required. Merge by PR will **NOT** result in Deploy/Release under any circumstance. 
+* Deploy and release are separate actions - for the sake of audit
+* Deploy pushes versioned docker images to Git Hub
+* Release installs the appropriate version of the software to the kubernetes cloud in rolling manner to avoid downtime
+* To deploy/release services, a commit and push to master branch is required. Merge by PR will **NOT** result in Deploy/Release under any circumstance. 
 
 #### The following actions are supported by the automated builds
 * DEPLOY - Builds docker images and pushes them to the docker hub with a given version
