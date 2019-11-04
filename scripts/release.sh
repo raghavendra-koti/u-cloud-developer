@@ -8,6 +8,8 @@ then
     exit 0
 fi
 
+sudo chmod +x ./scripts/kill-beta.sh
+
 if [ $ACTION == "RELEASE" -o $ACTION == "RELEASE-BETA" -o $ACTION == "PROMOTE" -o $ACTION == "ROLLBACK" -o $ACTION == "ROLLBACK-BETA" ]
 then
     if [ $ACTION == "ROLLBACK" ]
@@ -26,7 +28,7 @@ then
     fi 
 
     if [ $ACTION == "ROLLBACK-BETA" ]
-    then
+    then  
         ./scripts/kill-beta.sh
         exit 0
     fi
