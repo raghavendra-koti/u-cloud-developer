@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: reverseproxy
-  name: reverseproxy
+  name: $DEPLOYMENT_NAME
 spec:
   replicas: 1
   template:
@@ -12,7 +12,7 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: shaastra/reverseproxy:prod
+      - image: shaastra/reverseproxy:$VERSION
         name: reverseproxy
         imagePullPolicy: Always          
         resources:

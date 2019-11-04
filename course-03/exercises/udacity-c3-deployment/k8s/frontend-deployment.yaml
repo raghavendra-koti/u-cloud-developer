@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: frontend
-  name: frontend
+  name: $DEPLOYMENT_NAME
 spec:
   replicas: 1
   template:
@@ -13,7 +13,7 @@ spec:
         api: external        
     spec:
       containers:
-      - image: shaastra/udacity-frontend:prod
+      - image: shaastra/udacity-frontend:$VERSION
         name: frontend
         imagePullPolicy: Always          
         ports:

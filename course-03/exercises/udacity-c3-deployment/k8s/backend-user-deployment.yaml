@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: backend-user
-  name: backend-user
+  name: $DEPLOYMENT_NAME
 spec:
   replicas: 1
   template:
@@ -12,7 +12,7 @@ spec:
         service: backend-user
     spec:
       containers:
-      - image: shaastra/udacity-restapi-user:prod
+      - image: shaastra/udacity-restapi-user:$VERSION
         name: backend-user 
         imagePullPolicy: Always  
         resources:

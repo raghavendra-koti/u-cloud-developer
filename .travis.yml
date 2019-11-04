@@ -2,63 +2,19 @@ language: minimal
 
 services: docker
 
+branches:
+  only:
+    - master
+
 env:
-  #- DOCKER_COMPOSE_VERSION=1.23.2
-  - APP_VERSION=prod
+  # BUILD, DEPLOY, RELEASE, RELEASE-BETA,  
+  - ACTION='BUILD'
+  - VERSION=
+  - ROLLBACK_VERSION=
 
 before_install:
-  #- docker -v && docker-compose -v
-  #- sudo rm /usr/local/bin/docker-compose
-  #- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  #- chmod +x docker-compose
-  #- sudo mv docker-compose /usr/local/bin
-  #- docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
-
-  # - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
-  
-  # - docker build -t udacity-restapi-feed course-03/exercises/udacity-c3-restapi-feed/.
-  # - docker tag udacity-restapi-feed shaastra/udacity-restapi-feed:"$APP_VERSION" 
-  # - docker push shaastra/udacity-restapi-feed:"$APP_VERSION"
-
-  # - docker build -t udacity-restapi-user course-03/exercises/udacity-c3-restapi-user/.
-  # - docker tag udacity-restapi-user shaastra/udacity-restapi-user:"$APP_VERSION" 
-  # - docker push shaastra/udacity-restapi-user:"$APP_VERSION"
-
-  # - docker build -t udacity-frontend course-03/exercises/udacity-c3-frontend/.
-  # - docker tag udacity-frontend shaastra/udacity-frontend:"$APP_VERSION" 
-  # - docker push shaastra/udacity-frontend:"$APP_VERSION"
-
-  # - docker build -t reverseproxy course-03/exercises/udacity-c3-deployment/docker/.
-  # - docker tag reverseproxy shaastra/reverseproxy:"$APP_VERSION" 
-  # - docker push shaastra/reverseproxy:"$APP_VERSION"
+  - if [ $TRAVIS_PULL_REQUEST != "false" ]; then ./scripts/build.sh $ACTION else ./scripts/deploy.sh $ACTION, $VERSION, $ROLLBACK_VERSION
 
 install:
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.0/bin/linux/amd64/kubectl
-  - chmod +x ./kubectl
-  - sudo mv ./kubectl /usr/local/bin/kubectl
-  - sudo mkdir ~/.kube
-
-  - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
-  - chmod +x ./aws-iam-authenticator
-  - sudo mv ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
-  
-  - sudo mv kubeconfig $HOME/.kube/config
-  - sudo chown $(id -u):$(id -g) $HOME/.kube/config
-  - sudo chown $(id -u):$(id -g) $HOME/.kube/
-  
-  - kubectl config set clusters.my-dev-cluster.ap-south-1.eksctl.io.certificate-authority-data $KUBE_CERTIFICATE
-  - kubectl config set clusters.my-dev-cluster.ap-south-1.eksctl.io.server $KUBE_SERVER
-
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/aws-secret.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/env-secret.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/env-configmap.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/frontend-deployment.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-feed-service.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-user-service.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/frontend-service.yaml
-  - kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-service.yaml
-
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./scripts/release.sh $ACTION, $VERSION, $ROLLBACK_VERSION
 
