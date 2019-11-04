@@ -15,6 +15,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/
 kubectl config set clusters.my-dev-cluster.ap-south-1.eksctl.io.certificate-authority-data $KUBE_CERTIFICATE
 kubectl config set clusters.my-dev-cluster.ap-south-1.eksctl.io.server $KUBE_SERVER
 
-kubectl apply -f ../course-03/exercises/udacity-c3-deployment/k8s/aws-secret.yaml
-kubectl apply -f ../course-03/exercises/udacity-c3-deployment/k8s/env-secret.yaml
-kubectl apply -f ../course-03/exercises/udacity-c3-deployment/k8s/env-configmap.yaml
+kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/aws-secret.yaml
+kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/env-secret.yaml
+kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/env-configmap.yaml
