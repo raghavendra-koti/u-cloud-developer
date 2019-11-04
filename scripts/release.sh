@@ -36,7 +36,7 @@ then
         ./scripts/kill-beta.sh
     fi
 
-    ./prepare-release.sh
+    ./scripts/prepare-release.sh
 
     sed -i "s/\$DEPLOYMENT_VERSION/backend-user${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
     sed -i "s/\$VERSION/${VERSION}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
