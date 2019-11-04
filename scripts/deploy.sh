@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-
 ACTION=$1
 VERSION=$2
 
@@ -14,12 +13,7 @@ then
     exit 0
 fi
 
-if [ "$ACTION" == "DEPLOY" ] 
-then
-    VERSION = $2
-else
-    VERSION = $3
-fi
+VERSION = $2
 
 docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
 

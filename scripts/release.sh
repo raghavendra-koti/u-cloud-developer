@@ -10,7 +10,7 @@ fi
 
 if [ $ACTION == "RELEASE" -o $ACTION == "RELEASE-BETA" -o $ACTION == "PROMOTE" -o $ACTION == "ROLLBACK" -o $ACTION == "ROLLBACK-BETA" ]
 then
-    if[ $ACTION == "ROLLBACK" ]
+    if [ $ACTION == "ROLLBACK" ]
     then
         VERSION = $3
     fi
