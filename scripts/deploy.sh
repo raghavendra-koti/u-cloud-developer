@@ -3,12 +3,12 @@
 ACTION=$1
 VERSION=$2
 
-if [$TRAVIS_PULL_REQUEST != "false"]
+if [ $TRAVIS_PULL_REQUEST != "false" ]
 then
     exit 0
 fi
 
-if [$ACTION != "DEPLOY"]
+if [ $ACTION != "DEPLOY" ]
 then
     echo "Nothing to deploy"
     exit 0

@@ -16,16 +16,30 @@ Deploy and release are separate actions - for the sake of audit
 "Release" release the appropriate version of the software to the kubernetes cloud in rolling manner to avoid downtime
 
 There are various release modes
-1. RELEASE - Releases the version specified as a rolling release to avoid downtime
-2. RELASE-BETA - Releases a new version and runs the services in parallel to the existing version for A/B testing
-3. PROMOTE - Promotes the BETA version to production
-4. ROLLBACK - downgrades the version of the services to a specified previous version
-5. ROLLBACK-BETA - Kills the beta version instances
+1. DEPLOY - Builds docker images and pushes them to the docker hub
+2. RELEASE - Releases the version specified as a rolling release to avoid downtime. Assumes the version has already been deployed in a previous step.
+3. RELASE-BETA - Releases a new version and runs the services in parallel to the existing version for A/B testing
+4. PROMOTE - Promotes the BETA version to production
+5. ROLLBACK - downgrades the version of the services to a specified previous version
+6. ROLLBACK-BETA - Kills the current beta version instances
 
 .travis.yml has the following environment variables that are used to specify the above release modes
 
-1. BUILD
-ACTION=BUILD
+1. DEPLOY
+ACTION=DEPLOY VERSION=1.0
 
-2.  
+2. RELEASE
+ACTION=RELEASE VERSION=1.0
+
+3. RELEASE-BETA
+ACTION=RELEASE-BETA VERSION=1.1.beta
+
+4. PROMOTE
+ACTION=PROMOTE VERSION=1.1
+
+5. ROLLBACK
+ACTION=ROLLBACK ROLLBACK_VERSION=0.9
+
+6. ROLLBACK-BETA
+ACTION=ROLLBACK_BETA 
 

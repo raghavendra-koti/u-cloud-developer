@@ -3,19 +3,19 @@ ACTION=$1
 VERSION=$2
 BETA=""
 
-if [$TRAVIS_PULL_REQUEST != "false"]
+if [ $TRAVIS_PULL_REQUEST != "false" ]
 then
     exit 0
 fi
 
-if[$ACTION == "RELEASE" -o $ACTION == "RELEASE-BETA" -o $ACTION == "PROMOTE" -o $ACTION == "ROLLBACK" -o $ACTION == "ROLLBACK-BETA"]
+if[ $ACTION == "RELEASE" -o $ACTION == "RELEASE-BETA" -o $ACTION == "PROMOTE" -o $ACTION == "ROLLBACK" -o $ACTION == "ROLLBACK-BETA" ]
 then
-    if[$ACTION == "ROLLBACK"]
+    if[ $ACTION == "ROLLBACK" ]
     then
         VERSION = $3
     fi
 
-    if [$ACTION == "RELEASE-BETA"]
+    if [ $ACTION == "RELEASE-BETA" ]
     then
         BETA = "-BETA"
 
@@ -25,13 +25,13 @@ then
         sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
     fi 
 
-    if [$ACTION == "ROLLBACK-BETA"]
+    if [ $ACTION == "ROLLBACK-BETA" ]
     then
         ./scripts/kill-beta.sh
         exit 0
     fi
 
-    if [$ACTION == "PROMOTE"]
+    if [ $ACTION == "PROMOTE" ]
     then
         ./scripts/kill-beta.sh
     fi
