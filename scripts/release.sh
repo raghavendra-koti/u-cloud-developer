@@ -41,16 +41,16 @@ then
     sudo chmod +x ./scripts/prepare-release.sh
     ./scripts/prepare-release.sh
 
-    sed -i "s/\$DEPLOYMENT_VERSION/backend-user${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
+    sed -i "s/\$DEPLOYMENT_NAME/backend-user${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
     sed -i "s/\$VERSION/${VERSION}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
 
-    sed -i "s/\$DEPLOYMENT_VERSION/backend-feed${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
+    sed -i "s/\$DEPLOYMENT_NAME/backend-feed${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
     sed -i "s/\$VERSION/${VERSION}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
 
-    sed -i "s/\$DEPLOYMENT_VERSION/frontend${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/frontend-deployment.yaml 
+    sed -i "s/\$DEPLOYMENT_NAME/frontend${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/frontend-deployment.yaml 
     sed -i "s/\$VERSION/${VERSION}/g" course-03/exercises/udacity-c3-deployment/k8s/frontend-deployment.yaml 
 
-    sed -i "s/\$DEPLOYMENT_VERSION/reverseproxy${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
+    sed -i "s/\$DEPLOYMENT_NAME/reverseproxy${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
     sed -i "s/\$VERSION/${VERSION}/g" course-03/exercises/udacity-c3-deployment/k8s/reverseproxy-deployment.yaml
 
     kubectl apply -f course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
