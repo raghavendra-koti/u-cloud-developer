@@ -13,7 +13,6 @@ then
     exit 0
 fi
 
-VERSION = $2
 
 docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
 

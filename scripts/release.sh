@@ -15,13 +15,13 @@ then
     if [ $ACTION == "ROLLBACK" ]
     then
         echo "Setting rollback version"
-        VERSION = $3
+        VERSION=$3
         echo "VERSION ..= ${VERSION}"
     fi
 
     if [ $ACTION == "RELEASE-BETA" ]
     then
-        BETA = "-BETA"
+        BETA="-BETA"
 
         sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
         sed -i "s/replicas.*/1/g" course-03/exercises/udacity-c3-deployment/k8s/backend-feed-deployment.yaml
