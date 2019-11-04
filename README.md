@@ -32,21 +32,21 @@ To deploy/release services, a commit and push to master branch is required. Merg
 * ROLLBACK-BETA - Kills the current beta version instances
 
 #### .travis.yml has the following environment variables that are used to specify the above release modes. Commiting and pushing .travis.yml to master branch directly will automatically trigger deploy/release.
-* DEPLOY
+* DEPLOY <br/>
 ACTION=DEPLOY VERSION=1.0
 
-* RELEASE
+* RELEASE <br/>
 ACTION=RELEASE VERSION=1.0
 
-* RELEASE-BETA
+* RELEASE-BETA <br/>
 ACTION=RELEASE-BETA VERSION=1.1.beta
 
-* PROMOTE
+* PROMOTE <br/>
 ACTION=PROMOTE VERSION=1.1
 
-* ROLLBACK
+* ROLLBACK <br/>
 ACTION=ROLLBACK ROLLBACK_VERSION=0.9
 
-* ROLLBACK-BETA
+* ROLLBACK-BETA <br/>
 ACTION=ROLLBACK_BETA 
 
