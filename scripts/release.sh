@@ -12,11 +12,15 @@ sudo chmod +x ./scripts/kill-beta.sh
 
 if [ $ACTION == "RELEASE" -o $ACTION == "RELEASE-BETA" -o $ACTION == "PROMOTE" -o $ACTION == "ROLLBACK" -o $ACTION == "ROLLBACK-BETA" ]
 then
+
+    sudo chmod +x ./scripts/prepare-release.sh
+    ./scripts/prepare-release.sh
+    
     if [ $ACTION == "ROLLBACK" ]
     then
         echo "Setting rollback version"
         VERSION=$3
-        echo "VERSION ..= ${VERSION}"
+        echo "VERSION = ${VERSION}"
     fi
 
     if [ $ACTION == "RELEASE-BETA" ]
@@ -40,11 +44,6 @@ then
         ./scripts/kill-beta.sh
     fi
 
-    sudo chmod +x ./scripts/prepare-release.sh
-    ./scripts/prepare-release.sh
-
-    echo "VERSION: ${VERSION}"
-    echo "ACTION: ${ACTION}"
 
     sed -i "s/\$DEPLOYMENT_NAME/backend-user${BETA}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
     sed -i "s/\$VERSION/${VERSION}/g" course-03/exercises/udacity-c3-deployment/k8s/backend-user-deployment.yaml
