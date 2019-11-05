@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { FeedItem } from '../feed/models/feed-item.model';
 import { catchError, tap, map } from 'rxjs/operators';
 
-const API_HOST = environment.apiHost;
+const API_HOST = 'http://192.168.99.100:8080/api/v0';
 
 @Injectable({
   providedIn: 'root'

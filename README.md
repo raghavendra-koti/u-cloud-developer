@@ -1,6 +1,13 @@
 #   cloud-developer
 content for Udacity's cloud developer nanodegree
 
+### Project submission documents are in project-submissions folder. This folder includes
+ * screenshots of pods running in aws kubernetes cluster
+ * Travis CI builds and output files
+ * aws cloud watch integration
+ * screenshots of application running successfully locally using docker-compose
+ * AB deployment in aws kubernetes cluster
+
 ## Services
 There are four services in this repository/project
 * Feed Service - A Node restful service to provide feed of the pictures
